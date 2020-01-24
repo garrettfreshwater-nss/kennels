@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react"
 /*
     The context is imported and used by individual components
     that need data
-
+    ?llol
+    *YES
     !!Create it, define it, what can other people use?
 */
 export const AnimalContext = React.createContext() //every provider needs a context created.

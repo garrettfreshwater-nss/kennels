@@ -1,19 +1,26 @@
 import React, { useContext } from "react"
-import Animal from "./Animal";
-import { AnimalContext } from "./AnimalProvider";
+import { AnimalContext } from "./AnimalProvider"
+import { LocationContext } from "../location/LocationProvider"
+import { CustomerContext } from "../customer/CustomerProvider"
+import Animal from "./Animal"
 import "./Animals.css"
 
 export default () => {
-    // const locations = useLocations() <--same thing as below, but diff.
     const { animals } = useContext(AnimalContext)
-    // LocationContext provides actual data and application component
+    const { locations } = useContext(LocationContext)
+    const { customers } = useContext(CustomerContext)
 
     return (
         <div className="animals">
-        {
-            // Animals.map( loc => Location(loc) />) how we use to do it
-            animals.map(ani => <Animal key={ani.id} animal={ani} />)
-        }
+            {animals.map(animal => {
+                const owner = customers.find(c => c.id === animal.customerId)
+                const clinic = locations.find(l => l.id === animal.locationId)
+
+                return <Animal key={animal.id}
+                            location={clinic}
+                            customer={owner}
+                            animal={animal} />
+            })}
         </div>
     )
 }

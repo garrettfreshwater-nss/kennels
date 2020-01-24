@@ -11,7 +11,7 @@ export default () => {
     return (
         <div className="employees">
         {
-            // employees.map( loc => Location(loc) />) how we use to do it
+            //employees.map( loc => Location(loc) />) how we use to do it
             employees.map(emp => <Employee key={emp.id} employee={emp} />)
         }
         </div>
