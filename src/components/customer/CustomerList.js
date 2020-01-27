@@ -10,6 +10,7 @@ export default () => {
 
     return (
         <div className="customers">
+        <h1>Customers</h1>
         {
             // customers.map( loc => Location(loc) />) how we use to do it
             customers.map(cust => <Customer key={cust.id} customer={cust} />)

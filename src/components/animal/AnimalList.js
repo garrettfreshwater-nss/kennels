@@ -11,7 +11,9 @@ export default () => {
     const { customers } = useContext(CustomerContext)
 
     return (
+        
         <div className="animals">
+        <h1>Animals</h1>
             {animals.map(animal => {
                 const owner = customers.find(c => c.id === animal.customerId)
                 const clinic = locations.find(l => l.id === animal.locationId)
