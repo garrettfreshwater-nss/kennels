@@ -1,19 +1,40 @@
 import React, { useContext } from "react"
-import Employee from "./Employee";
-import { EmployeeContext } from "./EmployeeProvider";
+import { EmployeeContext } from "./EmployeeProvider"
+import { LocationContext } from "../location/LocationProvider"
+import Employee from "./Employee"
 import "./Employees.css"
 
-export default () => {
+export default props => {
     // const locations = useLocations() <--same thing as below, but diff.
     const { employees } = useContext(EmployeeContext)
-    // LocationContext provides actual data and application component
+    const { locations } = useContext(LocationContext)
+     // LocationContext provides actual data and application component
 
     return (
         <div className="employees">
-        {
-            //employees.map( loc => Location(loc) />) how we use to do it
-            employees.map(emp => <Employee key={emp.id} employee={emp} />)
-        }
+            <h1>Employees</h1>
+
+            <button onClick={() => props.history.push("/employees/create")}>
+                Add Employee
+            </button>
+
+            <article className="employeeList">
+                {
+                    employees.map(employee => {
+                        // Find this employee's matching location object
+                        const foundedLocation = locations.find(
+                            (location) => {
+                                return location.id === employee.locationId
+                            }
+                        )
+
+                        // Pass the matching location to Employee component
+                        return <Employee key={employee.id}
+                                         location={foundedLocation}
+                                         employee={employee} />
+                    })
+                }
+            </article>
         </div>
     )
 }

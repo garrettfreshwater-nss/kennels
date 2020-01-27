@@ -8,6 +8,7 @@ import { CustomerProvider } from "./customer/CustomerProvider";
 import CustomerList from "./customer/CustomerList";
 import { EmployeeProvider } from "./employee/EmployeeProvider";
 import EmployeeList from "./employee/EmployeeList";
+import EmployeeForm from "./employee/EmployeeForm";
 
 export default (props) => {
     return (
@@ -38,11 +39,20 @@ export default (props) => {
             </CustomerProvider>
 
             <EmployeeProvider>
-                {/* Render the employees list when http://localhost:3000/employees */}
-                <Route path="/employees">
-                    <EmployeeList />
-                </Route>
-            </EmployeeProvider>  
+                <LocationProvider>
+                    <Route exact path="/employees" render={
+                        props => <EmployeeList {...props} />
+                    } />
+
+                    <Route exact path="/employees/create" render={
+                        props => <EmployeeForm {...props} />
+                    } />
+                </LocationProvider>
+            </EmployeeProvider>
+
+            
+
+            
         </>
     )
 }

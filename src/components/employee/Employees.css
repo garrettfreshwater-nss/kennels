@@ -1,14 +1,35 @@
 
 .employees {
     display: flex;
+    margin: 1em auto;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
+    
   }
   
   .employee {
-      flex-basis: 28%;
-      margin: 1em;
       padding: 1em;
       border: .5px solid slategray;
       background-color: whitesmoke;
+      margin: 1em auto;
+      max-width: 60%;
+  }
+
+  button {
+      margin: 1em auto;
+  }
+
+  .employeeForm {
+    margin: 1em auto;
+    max-width: 60%;
+  }
+
+  .employeeForm fieldset {
+    border: none;
+  }
+
+  .employeeForm button {
+    border: none;
+    background-color: skyblue;
   }
