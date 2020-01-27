@@ -2,11 +2,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-image:url("yarn.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: 0;
   }
   
   .animal {
       flex-basis: 28%;
       margin: 1em;
       padding: 1em;
-      border: 1px solid goldenrod;
+      border: .5px solid slategray;
+      background-color: white;
+
+      
   }
