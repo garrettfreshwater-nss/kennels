@@ -1,58 +1,64 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { LocationProvider } from "./location/LocationProvider"
-import { AnimalProvider } from "./animal/AnimalProvider"
 import LocationList from "./location/LocationList"
+import { LocationProvider } from "./location/LocationProvider"
+import { CustomerProvider } from "./customer/CustomerProvider"
+import { EmployeeProvider } from "./employee/EmployeeProvider"
+import CustomerList from "./customer/CustomerList"
+import EmployeeList from "./employee/EmployeeList"
+import { AnimalProvider } from "./animal/AnimalProvider"
 import AnimalList from "./animal/AnimalList"
-import { CustomerProvider } from "./customer/CustomerProvider";
-import CustomerList from "./customer/CustomerList";
-import { EmployeeProvider } from "./employee/EmployeeProvider";
-import EmployeeList from "./employee/EmployeeList";
-import EmployeeForm from "./employee/EmployeeForm";
+import EmployeeForm from "./employee/EmployeeForm"
+import ProviderProvider from "./ProviderProvider"
+import AnimalDetails from "./animal/AnimalDetails.js"
+import AnimalForm from "./animal/AnimalForm"
 
 export default (props) => {
     return (
         <>
-        
-            <LocationProvider>
-                {/* Render the location list when http://localhost:3000/ */}
+        {/* Render the location list when http://localhost:3000/ */}
+            <ProviderProvider>
                 <Route exact path="/">
                     <LocationList />
                 </Route>
-            </LocationProvider>
-
-            <AnimalProvider> {/*!AnimalList component can access data from all three data providers in order to access the name property on both the customer and the location. */}
-                <LocationProvider>
-                    <CustomerProvider>
-                        <Route exact path="/animals">
-                            <AnimalList />
-                        </Route>
-                    </CustomerProvider>
-                </LocationProvider>
-            </AnimalProvider>
+            </ProviderProvider>
 
             <CustomerProvider>
-                {/* Render the customers list when http://localhost:3000/customers */}
-                <Route path="/customers">
+                <Route exact path="/customers">
                     <CustomerList />
                 </Route>
             </CustomerProvider>
 
             <EmployeeProvider>
                 <LocationProvider>
+
                     <Route exact path="/employees" render={
                         props => <EmployeeList {...props} />
                     } />
 
-                    <Route exact path="/employees/create" render={
+                    <Route path="/employees/create" render={
                         props => <EmployeeForm {...props} />
                     } />
                 </LocationProvider>
             </EmployeeProvider>
 
-            
+{/*!AnimalList component can access data from all three data providers in order to access the name property on both the customer and the location. */}
 
-            
+            <AnimalProvider>
+                <LocationProvider>
+                    <CustomerProvider>
+                        <Route exact path="/animals" render={
+                            props => <AnimalList {...props} />
+                        } />
+                        <Route exact path="/animals/create" render={
+                            props => <AnimalForm {...props} />
+                        } />
+                        <Route path="/animals/:animalId(\d+)" render={
+                            props => <AnimalDetails {...props} />
+                        } />
+                    </CustomerProvider>
+                </LocationProvider>
+            </AnimalProvider>
         </>
     )
 }
