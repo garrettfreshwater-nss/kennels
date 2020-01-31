@@ -1,19 +1,39 @@
+
 .animals {
     display: flex;
+    margin: 1em auto;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
-    background-image:url("yarn.jpg");
+    justify-content: space-around;
+    /* background-image:url("yarn.jpg");
     background-size: cover;
     background-attachment: fixed;
-    z-index: 0;
+    z-index: 0; */
+    
   }
   
   .animal {
-      flex-basis: 28%;
-      margin: 1em;
       padding: 1em;
       border: .5px solid slategray;
-      background-color: white;
+      background-color: whitesmoke;
+      margin: 1em auto;
+      max-width: 60%;
+  }
 
-      
+  button {
+      margin: 1em auto;
+  }
+
+  .animalForm {
+    margin: 1em auto;
+    max-width: 60%;
+  }
+
+  .animalForm fieldset {
+    border: none;
+  }
+
+  .animalForm button {
+    border: none;
+    background-color: skyblue;
   }

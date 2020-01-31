@@ -11,7 +11,7 @@ export default (props) => {
     const { customers } = useContext(CustomerContext)
 
     return (
-        
+   
         <div className="animals">
         <h1>Animals</h1>
 

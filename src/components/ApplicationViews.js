@@ -10,7 +10,7 @@ import { AnimalProvider } from "./animal/AnimalProvider"
 import AnimalList from "./animal/AnimalList"
 import EmployeeForm from "./employee/EmployeeForm"
 import ProviderProvider from "./ProviderProvider"
-import AnimalDetails from "./animal/AnimalDetails.js"
+import AnimalDetails from "./animal/AnimalDetails"
 import AnimalForm from "./animal/AnimalForm"
 
 export default (props) => {
